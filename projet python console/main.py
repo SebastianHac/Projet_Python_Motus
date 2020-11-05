@@ -1,6 +1,6 @@
 #REGLES : vu que pas d'affichage graphique : mot testé : si place ok : ecrit en MAJ
 # si lettre dedans mais pas bien placée : low
-# si pas dedans : point
+# si pas dedans : ' - ' 
 
 mot_adeviner=""
 while len(mot_adeviner) != 8:
