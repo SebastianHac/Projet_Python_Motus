@@ -34,13 +34,5 @@ class Grille: #Classe qui gere la grille
             pygame.draw.line(self.screen,(0,0,0), ligne[0], ligne[1],1)
         for colonne in self.colonnes:
             pygame.draw.line(self.screen,(0,0,0), colonne[0], colonne[1],1)
-        
-        
-    def entree_txt(self):
-        """doc"""
-        text = ''
-        input_box = pygame.Rect(100, 100, 140, 32)
-        color=(255,0,0)
-
 
       
