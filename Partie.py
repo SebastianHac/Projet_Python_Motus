@@ -2,6 +2,7 @@ import pygame
 import sys
 from Grille import *
 
+tab = []
 
 class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # Classe qui permet de lancer une partie
     """ Classe game """
@@ -13,6 +14,7 @@ class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # 
         self.screen = pygame.display.set_mode((1500, 1000))  # fenetre + taille
         self.grille = Grille(self.screen)
         self.surface_grille = pygame.Surface([645, 645])
+
 
     def jeu_en_cours(self):
         """ Jeu en cours ou non """
@@ -57,40 +59,72 @@ class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # 
                     if active:
                         if event.key == pygame.K_RETURN:
                             tabmot = list(motentre)
-                            tabmot2 = tabmot
-                            print(tabmot2[0])
-                            """for i in range (0,8):
+                            for i in range(0, 8):
                                 arial_font = pygame.font.SysFont("arial", 20)
-                                surface_ecriture = arial_font.render('tabmot2[i]', True, blue)
-                                self.screen.blit(surface_ecriture, [0,0])
-                                pygame.display.flip()
+                                # surface_case = pygame.Surface([75,75])
+                                # surface_case.fill((255,0,0))
+                                # self.screen.blit(surface_case, [position_x,position_y])
+                                surface_ecriture = arial_font.render(tabmot[i].upper(), True, blue)
+                                tab.append(surface_ecriture)
+                            '''for i in range (0,8):
+                                arial_font = pygame.font.SysFont("arial", 20)
+                                #surface_case = pygame.Surface([75,75])
+                                #surface_case.fill((255,0,0))
+                                #self.screen.blit(surface_case, [position_x,position_y])
+                                surface_ecriture = arial_font.render(tabmot[i].upper(), True, blue)
+                                #print(surface_ecriture)
+                                pygame.display.update(self.screen.blit(surface_ecriture, [position_x,position_y]))
+                                position_x += 80
+                                print(surface_ecriture)
+                                pygame.time.wait(500)
 
                                 self.surface_grille.blit(text, (position_x, position_y))
                                 self.surface_grille.blit(surface_case, (0, 100))
 
                                 position_x += 75
-                                print(position_x)"""
-
-
-                            pygame.display.flip()
+                                print(position_x)'''
+                            print('here')
                         elif event.key == pygame.K_BACKSPACE:
                             motentre = motentre[:-1]
                         else:
                             motentre += event.unicode
-            for i in tabmot:
-                arial_font = pygame.font.SysFont("arial", 500)
-                surface_ecriture = arial_font.render(i, True, blue)
-                surface_ecriture.fill((255,0,0))
-                self.screen.blit(surface_ecriture, [position_x, position_y])
-                mot_cop += i
-                position_x += 75
-                pygame.display.flip()
+
+            if tabmot != []:
+                for i in range (0,8):
+                    arial_font = pygame.font.SysFont("arial", 20)
+                    # surface_case = pygame.Surface([75,75])
+                    # surface_case.fill((255,0,0))
+                    # self.screen.blit(surface_case, [position_x,position_y])
+                    surface_ecriture = arial_font.render(tabmot[i].upper(), True, blue)
+                    tab.append(surface_ecriture)
+                    # print(surface_ecriture)
+                    pygame.display.update(self.screen.blit(surface_ecriture, [position_x, position_y]))
+                    position_x += 80
+                    print(surface_ecriture)
+                    pygame.time.wait(500)
+                print(tab)
+                position_x = 475
+                #position_y += 80
+                '''pygame.display.update(self.screen.blit(tab[0], [position_x, position_y]))
+                pygame.display.update(self.screen.blit(tab[1], [position_x + 80, position_y]))
+                pygame.display.update(self.screen.blit(tab[2], [position_x + 160, position_y]))
+                pygame.display.update(self.screen.blit(tab[3], [position_x + 240, position_y]))
+                pygame.display.update(self.screen.blit(tab[4], [position_x + 320, position_y]))
+                pygame.display.update(self.screen.blit(tab[5], [position_x + 400, position_y]))
+                pygame.display.update(self.screen.blit(tab[6], [position_x + 480, position_y]))
+                pygame.display.update(self.screen.blit(tab[7], [position_x + 560, position_y]))'''
 
 
 
-            self.screen.blit(text, (440, 100))
+            for i in tab:
+                position_y = 135
+                pygame.display.update(self.screen.blit(i, [position_x, position_y]))
+                position_x += 80
+            position_x = 475
+
+
+
             pygame.display.flip()
-            tabmot = []
             self.screen.fill((200, 173, 127))
             # remplir champ texte
             txt_surface = font.render(motentre, True, couleurchamp)
