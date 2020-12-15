@@ -1,8 +1,8 @@
 import pygame
 import sys
 from Grille import *
-
 tab = []
+
 
 class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # Classe qui permet de lancer une partie
     """ Classe game """
@@ -13,7 +13,28 @@ class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # 
         self.partie_en_cours = True  # True quand en cours, False pour leave
         self.screen = pygame.display.set_mode((1500, 1000))  # fenetre + taille
         self.grille = Grille(self.screen)
-        self.surface_grille = pygame.Surface([645, 645])
+        self.var1 = ''
+        self.var2 = ''
+        self.var3 = ''
+        self.var4 = ''
+        self.var5 = ''
+        self.var6 = ''
+        self.var7 = ''
+        self.var8 = ''
+
+    def afficher_mot(self):
+        print('entre')
+        position_x = 475
+        position_y = 100
+        self.var1 = pygame.display.update(self.screen.blit(tab[0], [position_x, position_y]))
+        self.var2 = pygame.display.update(self.screen.blit(tab[1], [position_x + 80, position_y]))
+        self.var3 = pygame.display.update(self.screen.blit(tab[2], [position_x + 160, position_y]))
+        self.var4 = pygame.display.update(self.screen.blit(tab[3], [position_x + 240, position_y]))
+        self.var5 = pygame.display.update(self.screen.blit(tab[4], [position_x + 320, position_y]))
+        self.var6 = pygame.display.update(self.screen.blit(tab[5], [position_x + 400, position_y]))
+        self.var7 = pygame.display.update(self.screen.blit(tab[6], [position_x + 480, position_y]))
+        self.var8 = pygame.display.update(self.screen.blit(tab[7], [position_x + 560, position_y]))
+        print('sort')
 
 
     def jeu_en_cours(self):
@@ -66,6 +87,7 @@ class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # 
                                 # self.screen.blit(surface_case, [position_x,position_y])
                                 surface_ecriture = arial_font.render(tabmot[i].upper(), True, blue)
                                 tab.append(surface_ecriture)
+                            self.afficher_mot()
                             '''for i in range (0,8):
                                 arial_font = pygame.font.SysFont("arial", 20)
                                 #surface_case = pygame.Surface([75,75])
@@ -89,7 +111,7 @@ class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # 
                         else:
                             motentre += event.unicode
 
-            if tabmot != []:
+            '''if tabmot != []:
                 for i in range (0,8):
                     arial_font = pygame.font.SysFont("arial", 20)
                     # surface_case = pygame.Surface([75,75])
@@ -104,24 +126,18 @@ class Partie(Grille):  # Classe qui permet de lancer une partieclass Partie : # 
                     pygame.time.wait(500)
                 print(tab)
                 position_x = 475
-                #position_y += 80
-                '''pygame.display.update(self.screen.blit(tab[0], [position_x, position_y]))
-                pygame.display.update(self.screen.blit(tab[1], [position_x + 80, position_y]))
-                pygame.display.update(self.screen.blit(tab[2], [position_x + 160, position_y]))
-                pygame.display.update(self.screen.blit(tab[3], [position_x + 240, position_y]))
-                pygame.display.update(self.screen.blit(tab[4], [position_x + 320, position_y]))
-                pygame.display.update(self.screen.blit(tab[5], [position_x + 400, position_y]))
-                pygame.display.update(self.screen.blit(tab[6], [position_x + 480, position_y]))
-                pygame.display.update(self.screen.blit(tab[7], [position_x + 560, position_y]))'''
+                #position_y += 80'''
+            if tab != []:
+                self.afficher_mot()
 
 
 
-            for i in tab:
+
+            '''for i in tab:
                 position_y = 135
                 pygame.display.update(self.screen.blit(i, [position_x, position_y]))
                 position_x += 80
-            position_x = 475
-
+            position_x = 475'''
 
 
             pygame.display.flip()
